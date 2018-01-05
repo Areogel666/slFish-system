@@ -140,7 +140,33 @@
 			<version>3.2</version>
 		</dependency>
   </dependencies>
+  
+ 
   <build>
     <finalName>slFish-system</finalName>
+  <plugins>
+	<plugin>
+	<groupId>org.codehaus.mojo</groupId>
+	<artifactId>tomcat-maven-plugin</artifactId>
+	<version>1.1</version>
+	<configuration>
+	<url>http://localhost:8080/manager/text</url>
+	<!--
+	2、deploy：eg http://localhost:8080/manager/deploy?path=/phoenix&war=&update=true
+	but the deploy url does not find.
+	the warning is as follows:
+	The page you tried to access (/manager/deploy) does not exist.
+	The Manager application has been re-structured for Tomcat 7 onwards and some of URLs have changed. All URLs used to access the Manager application should now start with one of the following options:
+	/manager/html for the HTML GUI
+	/manager/text for the text interface
+	/manager/jmxproxy for the JMX proxy
+	/manager/status for the status pages
+	-->
+	<username>admin</username>
+	<password>admin</password>
+	<path>/baseinfo</path>
+	</configuration>
+	</plugin>
+</plugins>
   </build>
 </project>
